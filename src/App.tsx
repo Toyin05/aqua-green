@@ -65,8 +65,9 @@ export default function App() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target
-    setFormData(prev => ({ ...prev, [id]: value }))
-    const filled = Object.values({ ...prev, [id]: value }).filter(Boolean).length
+    const updated = { ...formData, [id]: value }
+    setFormData(updated)
+    const filled = Object.values(updated).filter(Boolean).length
     setProgress(Math.max(50, Math.round((filled / 5) * 100)))
   }
 
@@ -123,6 +124,31 @@ export default function App() {
           </div>
         </div>
       </nav>
+
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-white md:hidden">
+          <div className="flex items-center justify-between h-20 px-6 border-b">
+            <div className="flex items-center gap-x-3">
+              <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#064E3B]">
+                <i className="fa-solid fa-seedling text-white text-2xl"></i>
+              </div>
+              <div className="font-semibold text-2xl tracking-tighter heading-font">Aqua-Green</div>
+            </div>
+            <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 flex items-center justify-center text-[#064E3B] cursor-pointer">
+              <i className="fa-solid fa-xmark text-2xl"></i>
+            </button>
+          </div>
+          <div className="flex flex-col gap-y-6 px-6 py-10 text-lg font-medium">
+            <a href="#system" onClick={() => scrollToSection('system')} className="text-[#374151] cursor-pointer">The System</a>
+            <a href="#hubs" onClick={() => scrollToSection('hubs')} className="text-[#374151] cursor-pointer">Our Hubs</a>
+            <a href="#verify" onClick={() => scrollToSection('verify')} className="text-[#374151] cursor-pointer">Transparency</a>
+            <a href="#register" onClick={() => scrollToSection('register')} className="text-[#374151] cursor-pointer">Join Program</a>
+            <button onClick={() => scrollToSection('register')} className="mt-4 px-6 py-3 rounded-2xl bg-[#10B981] text-white font-semibold text-center cursor-pointer">
+              Register Now
+            </button>
+          </div>
+        </div>
+      )}
 
       <section className="pt-20 min-h-[100dvh] flex items-center bg-[#064E3B] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#10B981_0.8px,transparent_1px)] bg-[length:5px_5px] opacity-10"></div>

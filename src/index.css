@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-[#F9FAFB] text-[#111827] overflow-x-hidden;
+  }
+}
+
+.heading-font {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.premium-heading {
+  font-size: clamp(2.75rem, 6.5vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.section-heading {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.premium-card {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 30px -15px rgb(0 0 0 / 0.1),
+              0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgb(0 0 0 / 0.12),
+              0 8px 16px -3px rgb(0 0 0 / 0.08);
+}
+
+.nav-scrolled {
+  background: rgba(249, 250, 251, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.section-reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stagger-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.hero-animate.delay-1 { animation-delay: 120ms; }
+.hero-animate.delay-2 { animation-delay: 240ms; }
+.hero-animate.delay-3 { animation-delay: 380ms; }
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.magnetic-btn {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+.nav-link {
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #10B981;
+}
+
+.form-input {
+  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #10B981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.premium-shadow {
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
